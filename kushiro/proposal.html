@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>選ばれ続けるまち、釧路 — KUSHIRO BRANDING PROPOSAL</title>
+<style>
+/* ===================== FONTS ===================== */
+@font-face{font-family:'NSJP';src:url('fonts/nsjp-400.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'NSJP';src:url('fonts/nsjp-700.woff2') format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:'NSJP';src:url('fonts/nsjp-900.woff2') format('woff2');font-weight:900;font-display:swap}
+@font-face{font-family:'NSerifJP';src:url('fonts/nserifjp-600.woff2') format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:'NSerifJP';src:url('fonts/nserifjp-700.woff2') format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:'SG';src:url('fonts/sg-400.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'SG';src:url('fonts/sg-500.woff2') format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'SG';src:url('fonts/sg-700.woff2') format('woff2');font-weight:700;font-display:swap}
+
+/* ===================== TOKENS ===================== */
+:root{
+  --ink:#152436;        /* twilight navy - base dark */
+  --ink-2:#1E3B5C;      /* night indigo */
+  --sunset:#F0662E;     /* 夕日 orange */
+  --tancho:#E23A2E;     /* 丹頂 red accent */
+  --amber:#F2A93B;      /* gold */
+  --wet:#3E6B54;        /* wetland green */
+  --wet-2:#6E9C7E;      /* light green */
+  --paper:#F6F2EA;      /* warm off-white */
+  --paper-2:#FBF9F4;
+  --mist:#DCE4E8;       /* mist blue-grey */
+  --line:#D8D2C6;       /* hairline on paper */
+  --text:#24303D;
+  --muted:#7C8794;
+  --sans:'NSJP','Noto Sans JP','IPAGothic',sans-serif;
+  --serif:'NSerifJP','Noto Serif JP','IPAGothic',serif;
+  --latin:'SG','Space Grotesk',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{font-family:var(--sans);color:var(--text);background:#3a4552;line-height:1.7;
+  -webkit-font-smoothing:antialiased;text-rendering:geometricPrecision}
+
+/* ===================== SLIDE FRAME ===================== */
+.slide{position:relative;width:1280px;height:720px;overflow:hidden;background:var(--paper);
+  margin:0 auto;page-break-after:always;break-after:page}
+.slide:last-child{page-break-after:auto}
+.pad{position:absolute;inset:0;padding:74px 84px}
+
+/* chrome */
+.kicker{font-family:var(--latin);font-size:12px;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--muted);font-weight:500}
+.idx{position:absolute;top:74px;right:84px;font-family:var(--latin);font-size:12px;
+  letter-spacing:.2em;color:var(--muted)}
+.footer{position:absolute;left:84px;right:84px;bottom:40px;display:flex;justify-content:space-between;
+  align-items:center;font-family:var(--latin);font-size:10.5px;letter-spacing:.18em;color:var(--muted);
+  text-transform:uppercase}
+.footer .brand{display:flex;align-items:center;gap:9px}
+.dark .kicker,.dark .idx,.dark .footer{color:rgba(255,255,255,.55)}
+.rule{height:1px;background:var(--line);border:0;margin:16px 0}
+.dark .rule{background:rgba(255,255,255,.18)}
+
+/* type helpers */
+h1,h2,h3{font-weight:700;line-height:1.28;letter-spacing:.01em}
+.serif{font-family:var(--serif)}
+.reddot{color:var(--tancho)}
+.hl{color:var(--sunset)}
+.small{font-size:13px;color:var(--muted);line-height:1.75}
+.lbl{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.14em;color:var(--wet)}
+
+/* ============ COVER (slide 1) ============ */
+.cover{background:var(--ink)}
+.cover .pad{display:flex;flex-direction:column;justify-content:flex-end}
+.cover-kv{position:absolute;inset:0}
+.cover-top{position:absolute;top:74px;left:84px;right:84px;display:flex;justify-content:space-between;
+  align-items:flex-start;z-index:3}
+.cover-copy{position:relative;z-index:3;margin-bottom:8px}
+.cover-copy .catch{font-family:var(--serif);font-weight:700;color:#fff;font-size:64px;line-height:1.34;
+  letter-spacing:.02em;text-shadow:0 2px 30px rgba(0,0,0,.35)}
+.cover-copy .catch .hl{color:#FFC978}
+.cover-copy .sub{margin-top:22px;color:rgba(255,255,255,.82);font-size:17px;letter-spacing:.16em}
+.cover-tag{font-family:var(--latin);font-size:12px;letter-spacing:.3em;color:rgba(255,255,255,.7);
+  text-transform:uppercase}
+
+/* ============ generic content ============ */
+.eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:26px}
+.eyebrow .no{font-family:var(--latin);font-size:13px;letter-spacing:.2em;color:var(--tancho);font-weight:700}
+.eyebrow .tt{font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:.14em;color:var(--muted)}
+.lead{font-family:var(--serif);font-weight:700;font-size:40px;line-height:1.4;letter-spacing:.01em;color:var(--ink)}
+.lead.sm{font-size:33px}
+.body{font-size:15.5px;color:#3c4854;line-height:1.95;max-width:60ch}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:56px;height:100%}
+.mt{margin-top:18px}.mt2{margin-top:30px}
+
+/* stat cards */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:38px}
+.stat{border-top:2px solid var(--ink);padding-top:16px}
+.stat .num{font-family:var(--latin);font-weight:700;font-size:52px;line-height:1;color:var(--ink);letter-spacing:-.01em}
+.stat .num .u{font-family:var(--sans);font-size:17px;font-weight:700;margin-left:4px}
+.stat .cap{margin-top:12px;font-size:12.5px;color:var(--muted);line-height:1.65}
+.stat.accent{border-color:var(--tancho)}
+.stat.accent .num{color:var(--tancho)}
+
+/* concept panel */
+.concept{background:var(--ink);color:#fff}
+.concept .pad{display:flex;flex-direction:column;justify-content:center}
+.concept .word{font-family:var(--serif);font-weight:700;font-size:88px;line-height:1.2;letter-spacing:.04em}
+.concept .word .hl{color:#FFC978}
+
+/* copy slide */
+.copybig{font-family:var(--serif);font-weight:700;font-size:60px;line-height:1.5;color:var(--ink);letter-spacing:.02em}
+.copybig .hl{color:var(--sunset)}
+.alt{display:grid;grid-template-columns:1fr 1fr;gap:14px 40px;margin-top:20px}
+.alt .row{display:grid;grid-template-columns:82px 1fr;gap:16px;align-items:baseline;
+  padding:13px 0;border-top:1px solid var(--line)}
+.alt .tag{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--wet);padding-top:3px}
+.alt .ph{font-family:var(--serif);font-weight:600;font-size:20px;color:var(--ink);line-height:1.5}
+
+/* logo slides */
+.logostage{background:var(--paper-2);border:1px solid var(--line);border-radius:4px;
+  display:flex;align-items:center;justify-content:center;height:100%}
+.mean-note{display:flex;gap:12px;align-items:flex-start;margin-top:16px}
+.mean-note .dot{width:14px;height:14px;border-radius:50%;flex:0 0 auto;margin-top:5px}
+.mean-note .tx{font-size:13.5px;line-height:1.7;color:#3c4854}
+.mean-note .tx b{color:var(--ink)}
+
+.varigrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:8px}
+.vari{border:1px solid var(--line);border-radius:4px;height:150px;display:flex;align-items:center;
+  justify-content:center;position:relative;background:#fff;overflow:hidden}
+.vari.dark{background:var(--ink)}
+.vari.green{background:var(--wet)}
+.vari .vl{position:absolute;left:12px;bottom:9px;font-family:var(--latin);font-size:9.5px;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.vari.dark .vl,.vari.green .vl{color:rgba(255,255,255,.6)}
+
+/* system: palette */
+.palette{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:6px}
+.sw{border-radius:4px;overflow:hidden;border:1px solid var(--line)}
+.sw .chip{height:96px}
+.sw .meta{padding:9px 11px;background:#fff}
+.sw .nm{font-size:12px;font-weight:700;color:var(--ink)}
+.sw .hex{font-family:var(--latin);font-size:10.5px;color:var(--muted);letter-spacing:.05em;margin-top:2px}
+.typ{margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.typ .spec{border-top:2px solid var(--ink);padding-top:12px}
+.typ .big{font-size:34px;color:var(--ink);line-height:1.2}
+.typ .cap{font-size:12px;color:var(--muted);margin-top:8px;letter-spacing:.04em}
+
+/* applications */
+.apps{display:grid;grid-template-columns:1.35fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:16px;height:100%}
+.app{border-radius:5px;overflow:hidden;position:relative;border:1px solid var(--line);background:#fff}
+.app .cap{position:absolute;left:14px;bottom:12px;z-index:4;font-size:11px;font-weight:700;
+  letter-spacing:.08em;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.5)}
+.app.big{grid-row:1 / span 2}
+
+/* why wins */
+.reasons{display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px;margin-top:34px}
+.reason{border-top:2px solid var(--tancho);padding-top:16px}
+.reason .n{font-family:var(--latin);font-size:13px;color:var(--tancho);font-weight:700;letter-spacing:.15em}
+.reason .h{font-family:var(--serif);font-weight:700;font-size:21px;color:var(--ink);margin-top:10px;line-height:1.4}
+.reason .p{font-size:13px;color:#4a5661;line-height:1.8;margin-top:10px}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:8px;border:1px solid var(--line);border-radius:5px;overflow:hidden}
+.vs>div{padding:22px 26px}
+.vs .old{background:#fff}
+.vs .new{background:var(--ink);color:#fff}
+.vs .t{font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--muted);margin-bottom:12px}
+.vs .new .t{color:rgba(255,255,255,.6)}
+.vs .l{font-family:var(--serif);font-size:22px;line-height:1.55}
+.vs .old .l{color:#9aa4ad}
+.vs .new .l .hl{color:#FFC978}
+
+/* closing */
+.close{background:var(--ink)}
+.close .pad{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.close .catch{font-family:var(--serif);font-weight:700;font-size:54px;color:#fff;line-height:1.4}
+.close .catch .hl{color:#FFC978}
+
+/* screen scroll helper (ignored in print) */
+@media screen{body{padding:30px 0}.slide{box-shadow:0 18px 50px rgba(0,0,0,.4);margin-bottom:34px;border-radius:6px}}
+@page{size:13.333in 7.5in;margin:0}
+</style>
+</head>
+<body>
+
+<!-- ============================================================= SLIDE 1 : COVER -->
+<section class="slide cover dark">
+  <svg class="cover-kv" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#101E31"/>
+        <stop offset="0.42" stop-color="#22344F"/>
+        <stop offset="0.7" stop-color="#7A4B44"/>
+        <stop offset="0.86" stop-color="#D9713C"/>
+        <stop offset="1" stop-color="#F2A65A"/>
+      </linearGradient>
+      <radialGradient id="sun" cx="0.5" cy="0.5" r="0.5">
+        <stop offset="0" stop-color="#FFDCA0"/>
+        <stop offset="0.55" stop-color="#F4863B"/>
+        <stop offset="1" stop-color="#E2532B"/>
+      </radialGradient>
+      <linearGradient id="river" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#FFD79E"/>
+        <stop offset="1" stop-color="#C7663A"/>
+      </linearGradient>
+      <linearGradient id="fog" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#EAD9C4" stop-opacity="0"/>
+        <stop offset="0.5" stop-color="#E9DAC6" stop-opacity="0.5"/>
+        <stop offset="1" stop-color="#E9DAC6" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <rect width="1280" height="720" fill="url(#sky)"/>
+    <circle cx="900" cy="352" r="86" fill="url(#sun)"/>
+    <circle cx="900" cy="352" r="132" fill="#F4863B" opacity="0.14"/>
+    <!-- distant hills -->
+    <path d="M0,470 C260,432 430,452 640,438 C880,422 1050,452 1280,436 L1280,720 L0,720 Z" fill="#2A2036" opacity="0.55"/>
+    <path d="M0,512 C220,486 470,504 700,492 C960,478 1120,500 1280,490 L1280,720 L0,720 Z" fill="#231a2b" opacity="0.7"/>
+    <!-- fog band -->
+    <rect x="0" y="452" width="1280" height="70" fill="url(#fog)"/>
+    <!-- wetland foreground -->
+    <path d="M0,556 C240,538 520,566 760,556 C1000,546 1140,566 1280,558 L1280,720 L0,720 Z" fill="#17130F"/>
+    <!-- meandering river catching light -->
+    <path d="M560,720 C600,650 520,614 590,576 C650,543 566,520 612,494 C650,472 604,458 636,446"
+          fill="none" stroke="url(#river)" stroke-width="26" stroke-linecap="round" opacity="0.92"/>
+    <path d="M560,720 C600,650 520,614 590,576 C650,543 566,520 612,494 C650,472 604,458 636,446"
+          fill="none" stroke="#FFF0D6" stroke-width="7" stroke-linecap="round" opacity="0.55"/>
+    <!-- cranes -->
+    <g fill="#0E0B08" opacity="0.92" transform="translate(214,300)">
+      <path d="M0,44 C10,40 16,30 20,20 C22,26 24,32 30,34 C36,36 44,34 52,28 C46,40 34,48 22,48 C30,52 40,52 48,50 C38,58 20,58 10,52 C6,56 2,60 -2,66 C-1,58 -1,50 0,44 Z"/>
+      <path d="M20,20 C21,14 24,9 30,7 L33,10 C29,12 26,16 24,22 Z"/>
+    </g>
+    <g fill="#0E0B08" opacity="0.85" transform="translate(300,344) scale(0.72)">
+      <path d="M0,44 C10,40 16,30 20,20 C22,26 24,32 30,34 C36,36 44,34 52,28 C46,40 34,48 22,48 C30,52 40,52 48,50 C38,58 20,58 10,52 C6,56 2,60 -2,66 C-1,58 -1,50 0,44 Z"/>
+    </g>
+    <!-- reeds -->
+    <g stroke="#0E0B08" stroke-width="3" opacity="0.85" fill="none" stroke-linecap="round">
+      <path d="M120,720 C118,650 126,600 116,560"/><path d="M150,720 C152,660 144,610 158,566"/>
+      <path d="M92,720 C90,668 98,628 86,592"/><path d="M1180,720 C1178,652 1188,606 1176,566"/>
+      <path d="M1150,720 C1152,662 1144,616 1160,578"/>
+    </g>
+    <rect width="1280" height="720" fill="#0B1524" opacity="0.16"/>
+  </svg>
+
+  <div class="cover-top">
+    <!-- logo (reversed) -->
+    <svg width="228" height="52" viewBox="0 0 300 68" xmlns="http://www.w3.org/2000/svg" aria-label="KUSHIRO">
+      <g transform="translate(6,4)">
+        <path d="M30,60 C40,46 20,40 34,28 C44,20 30,14 40,6" fill="none" stroke="#F4F1EA" stroke-width="6.5" stroke-linecap="round"/>
+        <circle cx="37.5" cy="17" r="7.5" fill="#E23A2E"/>
+      </g>
+      <text x="78" y="40" font-family="SG,'Space Grotesk',sans-serif" font-weight="700" font-size="34" letter-spacing="6" fill="#F4F1EA">KUSHIRO</text>
+      <text x="80" y="60" font-family="NSerifJP,serif" font-weight="600" font-size="14" letter-spacing="9" fill="rgba(244,241,234,.72)">釧 路 市</text>
+    </svg>
+    <div class="cover-tag">Brand Logo &amp; Catch-copy Proposal ／ 2026</div>
+  </div>
+
+  <div class="pad">
+    <div class="cover-copy">
+      <div style="font-family:var(--sans);font-size:15px;letter-spacing:.28em;color:rgba(255,255,255,.7);margin-bottom:18px">選ばれ続けるまち、釧路。</div>
+      <div class="catch serif">また、<span class="hl">来</span>たくなる。<br>ずっと、<span class="hl">い</span>たくなる。</div>
+      <div class="sub">KUSHIRO — the place you keep coming back to.</div>
+    </div>
+  </div>
+  <div class="footer"><div class="brand">KUSHIRO BRANDING PROJECT</div><div>提案書</div></div>
+</section>
+
+<!-- ============================================================= SLIDE 2 : PROBLEM -->
+<section class="slide">
+  <div class="idx">02 / 11</div>
+  <div class="pad">
+    <div class="eyebrow"><span class="no">01</span><span class="tt">課題 ／ THE PROBLEM</span></div>
+    <div class="two">
+      <div style="align-self:center">
+        <div class="lead">なぜ、まちのブランドは<br>「記憶に残らない」のか。</div>
+        <p class="body mt2">
+          多くの地方都市のブランドは、同じ言葉に行き着きます。
+          <b>「豊かな自然、美味しい食、あたたかい人。」</b><br>
+          — どれも本当のこと。けれど、全国どのまちも同じことを言っています。
+          審査員の前に、そして移住や観光を検討する人の前に、
+          <em>見分けのつかない言葉</em>が何十と並ぶ。これが、伝わらない最大の理由です。
+        </p>
+        <p class="body mt2">
+          釧路に必要なのは、もっと魅力を「足す」ことではありません。<br>
+          <b class="hl">釧路にしか言えない、たった一つの事実を選び抜くこと。</b>
+        </p>
+      </div>
+      <div style="align-self:center">
+        <div style="border:1px solid var(--line);border-radius:6px;padding:34px 34px 30px;background:var(--paper-2)">
+          <div class="lbl" style="color:var(--muted)">よくある、埋もれるコピー</div>
+          <div style="margin-top:18px;font-family:var(--serif);font-size:23px;color:#aab2ba;line-height:2.05">
+            自然あふれる、○○。<br>
+            食が美味しい、○○。<br>
+            人があたたかい、○○。<br>
+            未来を、みんなで、○○。
+          </div>
+          <hr class="rule" style="margin:26px 0">
+          <div style="display:flex;align-items:center;gap:12px">
+            <span style="width:10px;height:10px;border-radius:50%;background:var(--tancho);flex:0 0 auto"></span>
+            <span style="font-size:13px;color:#3c4854;line-height:1.7">差別化がない言葉は、<b>足し算</b>。<br>選ばれる言葉は、<b>引き算</b>から生まれる。</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><div class="brand">選ばれ続けるまち、釧路</div><div>THE PROBLEM</div></div>
+</section>
+
+<!-- ============================================================= SLIDE 3 : THE UNFAIR ADVANTAGE (DATA) -->
+<section class="slide">
+  <div class="idx">03 / 11</div>
+  <div class="pad">
+    <div class="eyebrow"><span class="no">02</span><span class="tt">洞察 ／ THE UNFAIR ADVANTAGE</span></div>
+    <div class="lead sm">釧路は、これから選ばれたいのではない。<br><span class="hl">釧路は、もう選ばれている。</span></div>
+    <p class="body mt" style="max-width:76ch">
+      他のまちが「来てください」と言っている間に、釧路は<b>14年連続で、北海道いちばん選ばれ続けてきた</b>という揺るぎない事実を持っています。これは願望ではなく、実績。真似できない、釧路だけの資産です。
+    </p>
+    <div class="stats">
+      <div class="stat accent">
+        <div class="num">14<span class="u">年連続</span></div>
+        <div class="cap">北海道体験移住「ちょっと暮らし」<br>利用者数 <b>全道第1位</b>（〜令和6年度）</div>
+      </div>
+      <div class="stat">
+        <div class="num">2,797<span class="u">人</span></div>
+        <div class="cap">令和6年度の<b>長期滞在者数</b>。<br>「試して、また戻ってくる」人の厚み。</div>
+      </div>
+      <div class="stat">
+        <div class="num">30℃<span class="u">未満</span></div>
+        <div class="cap">真夏でも30℃を超える日はほとんどない<b>涼しい夏</b>。猛暑の時代の“ぜいたく”。</div>
+      </div>
+      <div class="stat">
+        <div class="num">日本一<span class="u"></span></div>
+        <div class="cap"><b>釧路湿原</b>は日本最大の湿原。中核都市の機能と大自然が両立する稀有なまち。</div>
+      </div>
+    </div>
+    <p class="small mt2">出典：釧路市ホームページ「そもそもくしろってどんなまち？」／マーケティング戦略室 vol.1–3 ／ 楽待コラム（移住体験利用者数）。数値は令和6年度時点。</p>
+  </div>
+  <div class="footer"><div class="brand">選ばれ続けるまち、釧路</div><div>THE UNFAIR ADVANTAGE</div></div>
+</section>
+
+<!-- ============================================================= SLIDE 4 : CONCEPT -->
+<section class="slide concept dark">
+  <div class="idx">04 / 11</div>
+  <div class="pad">
+    <div class="eyebrow"><span class="no" style="color:#FFC978">03</span><span class="tt" style="color:rgba(255,255,255,.6)">ブランドの核 ／ THE IDEA</span></div>
+    <div class="word serif">選ばれ続ける<br>まち、<span class="hl">釧路</span>。</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:40px;max-width:1000px">
+      <div>
+        <div class="lbl" style="color:#8FB8A0">ブランドが約束すること</div>
+        <p style="color:rgba(255,255,255,.82);font-size:14.5px;line-height:1.95;margin-top:10px">
+          「一度きり」で終わらない関係。観光で<b style="color:#fff">また来たくなり</b>、滞在で<b style="color:#fff">ずっといたくなる</b>。
+          ふるさと納税・観光・長期滞在・二地域居住・移住 — 5つの取り組みすべてを、<b style="color:#FFC978">“選ばれ続ける”</b>という一本の背骨で束ねます。
+        </p>
+      </div>
+      <div>
+        <div class="lbl" style="color:#8FB8A0">戦略の視点：永続型資産 ™ の発想</div>
+        <p style="color:rgba(255,255,255,.82);font-size:14.5px;line-height:1.95;margin-top:10px">
+          人が「選ばれ続ける」のは、他人に真似できない<b style="color:#fff">資産</b>を持つから。まちも同じです。
+          涼しさ・日本一の湿原・ひがし北海道の中核 — <b style="color:#FFC978">誰にもコピーできない釧路の資産</b>を、ブランドの中心に据えます。
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><div class="brand" style="color:rgba(255,255,255,.55)">選ばれ続けるまち、釧路</div><div>THE IDEA</div></div>
+</section>
+
+<!-- ============================================================= SLIDE 5 : CATCH COPY -->
+<section class="slide">
+  <div class="idx">05 / 11</div>
+  <div class="pad">
+    <div class="eyebrow"><span class="no">04</span><span class="tt">キャッチコピー ／ CATCH-COPY</span></div>
+    <div class="lbl">主案 ／ PRIMARY</div>
+    <div class="copybig mt" style="margin-top:14px">また、<span class="hl">来</span>たくなる。<br>ずっと、<span class="hl">い</span>たくなる。</div>
+    <p class="body" style="margin-top:16px;max-width:82ch">
+      「また来たくなる」＝観光・再訪。「ずっといたくなる」＝長期滞在・二地域居住・移住。<b>短い一文で、5つの取り組みすべてを内包</b>します。やさしい言葉なのに、“選ばれ続ける”という戦略がそのまま伝わる — わかりやすさと詩情の両立。
+    </p>
+    <div class="lbl" style="margin-top:26px">副案 ／ ALTERNATES（切り口違い）</div>
+    <div class="alt">
+      <div class="row"><div class="tag">涼×時代性</div><div class="ph">「30℃を、知らない夏。」</div></div>
+      <div class="row"><div class="tag">事実訴求</div><div class="ph">「14年、選ばれ続けた理由がある。」</div></div>
+      <div class="row"><div class="tag">霧・詩的</div><div class="ph">「霧のむこうから、はじまる。」</div></div>
+      <div class="row"><div class="tag">湿原・悠久</div><div class="ph">「日本一の湿原が、深呼吸を教えてくれる。」</div></div>
+    </div>
+  </div>
+  <div class="footer"><div class="brand">選ばれ続けるまち、釧路</div><div>CATCH-COPY</div></div>
+</section>
+
+<!-- ============================================================= SLIDE 6 : LOGO MEANING -->
+<section class="slide">
+  <div class="idx">06 / 11</div>
+  <div class="pad">
+    <div class="eyebrow"><span class="no">05</span><span class="tt">ロゴ ／ THE MARK</span></div>
+    <div class="two">
+      <div class="logostage">
+        <svg width="330" height="330" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" aria-label="KUSHIRO symbol">
+          <defs>
+            <linearGradient id="mk" x1="0" y1="1" x2="0" y2="0">
+              <stop offset="0" stop-color="#3E6B54"/>
+              <stop offset="0.6" stop-color="#C9803A"/>
+              <stop offset="1" stop-color="#F0662E"/>
+            </linearGradient>
+          </defs>
+          <circle cx="150" cy="150" r="118" fill="none" stroke="#E7E0D3" stroke-width="2"/>
+          <!-- meandering river forms a K-like flow -->
+          <path d="M150,262 C186,214 108,196 168,150 C214,114 120,96 176,58"
+                fill="none" stroke="url(#mk)" stroke-width="20" stroke-linecap="round"/>
+          <path d="M150,262 C186,214 108,196 168,150 C214,114 120,96 176,58"
+                fill="none" stroke="#FBF3E3" stroke-width="5" stroke-linecap="round" opacity="0.5"/>
+          <!-- the chosen dot: crane crown / sunset / you-are-here -->
+          <circle cx="176" cy="58" r="19" fill="#E23A2E"/>
+        </svg>
+      </div>
+      <div style="align-self:center">
+        <div class="lead sm">The Meander &amp; The Dot<br><span style="font-family:var(--sans);font-size:16px;color:var(--muted);letter-spacing:.06em">— 蛇行する水と、選ばれた一点。</span></div>
+        <div class="mean-note" style="margin-top:26px"><span class="dot" style="background:url(#mk);background:linear-gradient(#F0662E,#3E6B54)"></span>
+          <div class="tx"><b>蛇行するリボン＝釧路川と日本一の湿原。</b>ゆったり流れる時間、急がないまちの豊かさ。うねりはさりげなく頭文字「K」を描きます。</div></div>
+        <div class="mean-note"><span class="dot" style="background:var(--tancho)"></span>
+          <div class="tx"><b>赤い一点＝丹頂の冠羽・世界三大夕日・そして「選ばれた一点」。</b>まちの誇りと、ここに来た“あなた”を重ねる印。</div></div>
+        <div class="mean-note"><span class="dot" style="background:linear-gradient(#3E6B54,#F0662E)"></span>
+          <div class="tx"><b>緑から夕日への階調＝湿原の朝から夕暮れまで。</b>一日を通して表情を変える、釧路の光。</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><div class="brand">選ばれ続けるまち、釧路</div><div>THE MARK</div></div>
+</section>
+
+<!-- ============================================================= SLIDE 7 : LOGO VARIATIONS -->
+<section class="slide">
+  <div class="idx">07 / 11</div>
+  <div class="pad">
+    <div class="eyebrow"><span class="no">06</span><span class="tt">ロゴ展開 ／ LOCK-UPS &amp; VARIATIONS</span></div>
+    <div class="varigrid">
+      <!-- horizontal primary -->
+      <div class="vari" style="height:172px">
+        <svg width="290" height="70" viewBox="0 0 300 72" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(4,6)">
+            <path d="M30,58 C40,44 20,40 34,28 C44,20 30,14 40,6" fill="none" stroke="#152436" stroke-width="6.5" stroke-linecap="round"/>
+            <circle cx="37.5" cy="17" r="7.5" fill="#E23A2E"/>
+          </g>
+          <text x="76" y="38" font-family="SG,sans-serif" font-weight="700" font-size="33" letter-spacing="5" fill="#152436">KUSHIRO</text>
+          <text x="78" y="58" font-family="NSerifJP,serif" font-weight="600" font-size="13" letter-spacing="8" fill="#7C8794">釧 路 市</text>
+        </svg>
+        <span class="vl">Horizontal — Primary</span>
+      </div>
+      <!-- stacked -->
+      <div class="vari" style="height:172px">
+        <svg width="150" height="150" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(56,6)">
+            <path d="M19,52 C27,40 12,36 23,26 C31,19 20,14 28,6" fill="none" stroke="#152436" stroke-width="5.5" stroke-linecap="round"/>
+            <circle cx="25.5" cy="15" r="6.5" fill="#E23A2E"/>
+          </g>
+          <text x="75" y="92" text-anchor="middle" font-family="SG,sans-serif" font-weight="700" font-size="27" letter-spacing="3" fill="#152436">KUSHIRO</text>
+          <text x="75" y="114" text-anchor="middle" font-family="NSerifJP,serif" font-weight="600" font-size="12" letter-spacing="7" fill="#7C8794">釧 路 市</text>
+        </svg>
+        <span class="vl">Stacked</span>
+      </div>
+      <!-- symbol -->
+      <div class="vari" style="height:172px">
+        <svg width="120" height="120" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="150" cy="150" r="118" fill="none" stroke="#E7E0D3" stroke-width="3"/>
+          <path d="M150,262 C186,214 108,196 168,150 C214,114 120,96 176,58" fill="none" stroke="#152436" stroke-width="20" stroke-linecap="round"/>
+          <circle cx="176" cy="58" r="19" fill="#E23A2E"/>
+        </svg>
+        <span class="vl">Symbol</span>
+      </div>
+      <!-- reversed dark -->
+      <div class="vari dark">
+        <svg width="270" height="64" viewBox="0 0 300 72" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(4,6)">
+            <path d="M30,58 C40,44 20,40 34,28 C44,20 30,14 40,6" fill="none" stroke="#F4F1EA" stroke-width="6.5" stroke-linecap="round"/>
+            <circle cx="37.5" cy="17" r="7.5" fill="#F2A93B"/>
+          </g>
+          <text x="76" y="38" font-family="SG,sans-serif" font-weight="700" font-size="33" letter-spacing="5" fill="#F4F1EA">KUSHIRO</text>
+          <text x="78" y="58" font-family="NSerifJP,serif" font-weight="600" font-size="13" letter-spacing="8" fill="rgba(244,241,234,.7)">釧 路 市</text>
+        </svg>
+        <span class="vl">Reversed / Night</span>
+      </div>
+      <!-- one color green -->
+      <div class="vari green">
+        <svg width="270" height="64" viewBox="0 0 300 72" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(4,6)">
+            <path d="M30,58 C40,44 20,40 34,28 C44,20 30,14 40,6" fill="none" stroke="#fff" stroke-width="6.5" stroke-linecap="round"/>
+            <circle cx="37.5" cy="17" r="7.5" fill="#fff"/>
+          </g>
+          <text x="76" y="38" font-family="SG,sans-serif" font-weight="700" font-size="33" letter-spacing="5" fill="#fff">KUSHIRO</text>
+          <text x="78" y="58" font-family="NSerifJP,serif" font-weight="600" font-size="13" letter-spacing="8" fill="rgba(255,255,255,.8)">釧 路 市</text>
+        </svg>
+        <span class="vl">Mono / 1-color</span>
+      </div>
+      <!-- monochrome ink -->
+      <div class="vari">
+        <svg width="120" height="120" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="150" cy="150" r="118" fill="#152436"/>
+          <path d="M150,262 C186,214 108,196 168,150 C214,114 120,96 176,58" fill="none" stroke="#F4F1EA" stroke-width="20" stroke-linecap="round"/>
+          <circle cx="176" cy="58" r="19" fill="#F2A93B"/>
+        </svg>
+        <span class="vl">App icon / Favicon</span>
+      </div>
+    </div>
+    <p class="small" style="margin-top:20px">縦横・シンボル単体・反転・1色・アプリアイコンまで、あらゆる媒体で崩れない設計。最小サイズでも「うねり＋赤い点」で識別できます。</p>
+  </div>
+  <div class="footer"><div class="brand">選ばれ続けるまち、釧路</div><div>LOCK-UPS</div></div>
+</section>
+
+<!-- ============================================================= SLIDE 8 : BRAND SYSTEM -->
+<section class="slide">
+  <div class="idx">08 / 11</div>
+  <div class="pad">
+    <div class="eyebrow"><span class="no">07</span><span class="tt">ブランドシステム ／ COLOR &amp; TYPE</span></div>
+    <div class="lbl">カラーパレット ／ 釧路の光と水からとった色</div>
+    <div class="palette" style="margin-top:14px">
+      <div class="sw"><div class="chip" style="background:#152436"></div><div class="meta"><div class="nm">Twilight Navy</div><div class="hex">#152436</div></div></div>
+      <div class="sw"><div class="chip" style="background:#F0662E"></div><div class="meta"><div class="nm">Sunset</div><div class="hex">#F0662E</div></div></div>
+      <div class="sw"><div class="chip" style="background:#E23A2E"></div><div class="meta"><div class="nm">Tancho Red</div><div class="hex">#E23A2E</div></div></div>
+      <div class="sw"><div class="chip" style="background:#F2A93B"></div><div class="meta"><div class="nm">Amber</div><div class="hex">#F2A93B</div></div></div>
+      <div class="sw"><div class="chip" style="background:#3E6B54"></div><div class="meta"><div class="nm">Wetland Green</div><div class="hex">#3E6B54</div></div></div>
+      <div class="sw"><div class="chip" style="background:#DCE4E8"></div><div class="meta"><div class="nm">Mist</div><div class="hex">#DCE4E8</div></div></div>
+    </div>
+    <div class="typ">
+      <div class="spec">
+        <div class="big serif">選ばれ続ける、その理由。</div>
+        <div class="cap"><b>見出し：Noto Serif JP</b> — 明朝の品格で、まちの誇りと詩情を。</div>
+      </div>
+      <div class="spec">
+        <div class="big" style="font-family:var(--sans);font-weight:700">また来たくなる、まちの物語。<br><span style="font-family:var(--latin);font-weight:700;font-size:30px">KUSHIRO / Aa 2026</span></div>
+        <div class="cap"><b>本文・英字：Noto Sans JP ／ Space Grotesk</b> — 可読性と現代性。</div>
+      </div>
+    </div>
+    <p class="small" style="margin-top:22px">明朝＝情緒・信頼、ゴシック＝機能・実用。二層の声で「詩情のあるわかりやすさ」を全媒体で一貫させます。</p>
+  </div>
+  <div class="footer"><div class="brand">選ばれ続けるまち、釧路</div><div>BRAND SYSTEM</div></div>
+</section>
+
+<!-- ============================================================= SLIDE 9 : KEY VISUAL -->
+<section class="slide dark" style="background:var(--ink)">
+  <div class="idx" style="z-index:5">09 / 11</div>
+  <svg style="position:absolute;inset:0" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="1280" height="720" fill="url(#sky)"/>
+    <circle cx="360" cy="300" r="78" fill="url(#sun)"/>
+    <circle cx="360" cy="300" r="120" fill="#F4863B" opacity="0.13"/>
+    <path d="M0,470 C260,432 430,452 640,438 C880,422 1050,452 1280,436 L1280,720 L0,720 Z" fill="#2A2036" opacity="0.5"/>
+    <rect x="0" y="452" width="1280" height="70" fill="url(#fog)"/>
+    <path d="M0,556 C240,538 520,566 760,556 C1000,546 1140,566 1280,558 L1280,720 L0,720 Z" fill="#17130F"/>
+    <path d="M720,720 C760,650 680,614 750,576 C810,543 726,520 772,494 C810,472 764,458 796,446" fill="none" stroke="url(#river)" stroke-width="24" stroke-linecap="round" opacity="0.92"/>
+    <path d="M720,720 C760,650 680,614 750,576 C810,543 726,520 772,494 C810,472 764,458 796,446" fill="none" stroke="#FFF0D6" stroke-width="6" stroke-linecap="round" opacity="0.5"/>
+    <g fill="#0E0B08" opacity="0.9" transform="translate(1010,250)">
+      <path d="M0,44 C10,40 16,30 20,20 C22,26 24,32 30,34 C36,36 44,34 52,28 C46,40 34,48 22,48 C30,52 40,52 48,50 C38,58 20,58 10,52 C6,56 2,60 -2,66 C-1,58 -1,50 0,44 Z"/>
+      <path d="M20,20 C21,14 24,9 30,7 L33,10 C29,12 26,16 24,22 Z"/>
+    </g>
+    <rect width="1280" height="720" fill="#0B1524" opacity="0.14"/>
+  </svg>
+  <div class="pad" style="display:flex;flex-direction:column;justify-content:center;z-index:3">
+    <div class="eyebrow"><span class="no" style="color:#FFC978">08</span><span class="tt" style="color:rgba(255,255,255,.6)">キービジュアル ／ KEY VISUAL</span></div>
+    <div style="font-family:var(--serif);font-weight:700;font-size:56px;color:#fff;line-height:1.4;text-shadow:0 2px 24px rgba(0,0,0,.4)">
+      また、<span style="color:#FFC978">来</span>たくなる。<br>ずっと、<span style="color:#FFC978">い</span>たくなる。
+    </div>
+    <p style="color:rgba(255,255,255,.82);font-size:15px;line-height:1.9;margin-top:20px;max-width:52ch">
+      世界三大夕日・日本一の湿原・丹頂・霧 — 釧路の“真似できない資産”を一枚に。写真でも、この配色と構図（夕景×蛇行する水×赤い点）で誰が見ても釧路とわかるビジュアルへ展開できます。
+    </p>
+  </div>
+  <div class="footer"><div class="brand" style="color:rgba(255,255,255,.55)">選ばれ続けるまち、釧路</div><div>KEY VISUAL</div></div>
+</section>
+
+<!-- ============================================================= SLIDE 10 : APPLICATIONS -->
+<section class="slide">
+  <div class="idx">10 / 11</div>
+  <div class="pad" style="padding-bottom:64px">
+    <div class="eyebrow"><span class="no">09</span><span class="tt">活用イメージ ／ APPLICATIONS</span></div>
+    <div class="apps" style="height:454px">
+      <!-- big poster -->
+      <div class="app big" style="background:var(--ink)">
+        <svg style="position:absolute;inset:0" viewBox="0 0 400 480" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="480" fill="url(#sky)"/>
+          <circle cx="150" cy="200" r="52" fill="url(#sun)"/>
+          <path d="M0,360 C120,346 260,368 400,356 L400,480 L0,480 Z" fill="#17130F"/>
+          <path d="M210,480 C230,430 190,410 224,384 C250,364 214,352 236,336" fill="none" stroke="url(#river)" stroke-width="14" stroke-linecap="round"/>
+        </svg>
+        <div style="position:absolute;left:26px;top:28px;z-index:3">
+          <div style="font-family:var(--serif);font-weight:700;color:#fff;font-size:30px;line-height:1.4;text-shadow:0 2px 16px rgba(0,0,0,.4)">また、来たくなる。<br>ずっと、いたくなる。</div>
+        </div>
+        <div style="position:absolute;left:26px;bottom:26px;z-index:3">
+          <svg width="150" height="34" viewBox="0 0 300 72" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(4,10)"><path d="M30,52 C40,40 22,36 34,26 C43,19 31,15 40,7" fill="none" stroke="#F4F1EA" stroke-width="6" stroke-linecap="round"/><circle cx="37.5" cy="17" r="7" fill="#F2A93B"/></g>
+            <text x="72" y="42" font-family="SG,sans-serif" font-weight="700" font-size="32" letter-spacing="5" fill="#F4F1EA">KUSHIRO</text>
+          </svg>
+        </div>
+        <div class="cap">観光ポスター</div>
+      </div>
+      <!-- furusato box -->
+      <div class="app" style="background:var(--paper-2)">
+        <div style="position:absolute;inset:0;border:14px solid var(--wet)"></div>
+        <div style="position:absolute;left:20px;top:20px;font-family:var(--serif);font-weight:700;color:var(--ink);font-size:17px;line-height:1.5">釧路から、<br>また逢いにいく味。</div>
+        <svg style="position:absolute;right:16px;bottom:32px" width="70" height="70" viewBox="0 0 300 300"><path d="M150,262 C186,214 108,196 168,150 C214,114 120,96 176,58" fill="none" stroke="#3E6B54" stroke-width="22" stroke-linecap="round"/><circle cx="176" cy="58" r="18" fill="#E23A2E"/></svg>
+        <div class="cap" style="color:var(--ink);text-shadow:none">ふるさと納税パッケージ</div>
+      </div>
+      <!-- SNS / OGP -->
+      <div class="app" style="background:var(--ink)">
+        <svg style="position:absolute;inset:0" viewBox="0 0 300 240" preserveAspectRatio="xMidYMid slice"><rect width="300" height="240" fill="url(#sky)"/><circle cx="220" cy="90" r="40" fill="url(#sun)"/></svg>
+        <div style="position:absolute;left:18px;top:16px;z-index:3;font-family:var(--serif);color:#fff;font-weight:700;font-size:16px;text-shadow:0 1px 10px rgba(0,0,0,.4)">#また来たくなる釧路</div>
+        <div class="cap">SNS ／ OGP</div>
+      </div>
+      <!-- migration site header -->
+      <div class="app" style="background:#fff">
+        <div style="position:absolute;left:18px;top:16px;font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--wet)">移住・二地域居住サイト</div>
+        <div style="position:absolute;left:18px;top:40px;right:18px;font-family:var(--serif);font-weight:700;color:var(--ink);font-size:20px;line-height:1.45">30℃を、<br>知らない夏へ。</div>
+        <div style="position:absolute;left:18px;bottom:34px;display:flex;gap:6px">
+          <span style="background:var(--sunset);color:#fff;font-size:9px;padding:4px 9px;border-radius:20px;font-weight:700">移住相談</span>
+          <span style="border:1px solid var(--line);color:var(--muted);font-size:9px;padding:4px 9px;border-radius:20px">ちょっと暮らし</span>
+        </div>
+        <div class="cap" style="color:var(--ink);text-shadow:none">Web サイトヘッダー</div>
+      </div>
+      <!-- pin / goods -->
+      <div class="app" style="background:var(--amber)">
+        <svg style="position:absolute;left:50%;top:44%;transform:translate(-50%,-50%)" width="86" height="86" viewBox="0 0 300 300"><path d="M150,262 C186,214 108,196 168,150 C214,114 120,96 176,58" fill="none" stroke="#152436" stroke-width="22" stroke-linecap="round"/><circle cx="176" cy="58" r="18" fill="#E23A2E"/></svg>
+        <div class="cap" style="color:var(--ink);text-shadow:none">ピンバッジ・グッズ</div>
+      </div>
+    </div>
+    <p class="small" style="margin-top:16px">一つの発想が、観光・ふるさと納税・移住・SNS・グッズまで無理なく伸びる。<b>“選ばれ続ける”という背骨があるから、展開してもブレない。</b></p>
+  </div>
+  <div class="footer"><div class="brand">選ばれ続けるまち、釧路</div><div>APPLICATIONS</div></div>
+</section>
+
+<!-- ============================================================= SLIDE 11 : WHY THIS WINS -->
+<section class="slide">
+  <div class="idx">11 / 11</div>
+  <div class="pad">
+    <div class="eyebrow"><span class="no">10</span><span class="tt">なぜ勝ち残るか ／ WHY THIS WINS</span></div>
+    <div class="vs">
+      <div class="old">
+        <div class="t">ありがちな提案</div>
+        <div class="l">「自然・食・人が魅力の、<br>みんなのまち。」</div>
+      </div>
+      <div class="new">
+        <div class="t">この提案</div>
+        <div class="l">「14年、<span class="hl">選ばれ続けてきた</span>という<br>事実を、まちの名前にする。」</div>
+      </div>
+    </div>
+    <div class="reasons">
+      <div class="reason">
+        <div class="n">01</div>
+        <div class="h">事実に立っている</div>
+        <div class="p">全道1位14年連続・涼しさ・日本一の湿原。願望ではなく<b>証明済みの資産</b>。審査でも移住検討でも、反論されない強さ。</div>
+      </div>
+      <div class="reason">
+        <div class="n">02</div>
+        <div class="h">一本の背骨で束ねる</div>
+        <div class="p">ふるさと納税・観光・長期滞在・二地域居住・移住 — <b>5分野すべてが「選ばれ続ける」に接続</b>。運用してもブレない設計。</div>
+      </div>
+      <div class="reason">
+        <div class="n">03</div>
+        <div class="h">わかりやすく、美しい</div>
+        <div class="p">やさしい一文と明朝の詩情、蛇行する水＋赤い点の象徴。<b>子どもから審査員まで一目で伝わる</b>芸術性。</div>
+      </div>
+    </div>
+    <hr class="rule" style="margin-top:30px">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end">
+      <p class="small" style="max-width:60ch">次のステップ：ロゴのベクター清書（AI/SVG）・カラー各種規定・トーン&マナーガイド・写真ディレクション・各媒体テンプレートの整備。</p>
+      <div style="font-family:var(--serif);font-weight:700;font-size:22px;color:var(--ink)">選ばれ続けるまち、釧路。</div>
+    </div>
+  </div>
+  <div class="footer"><div class="brand">選ばれ続けるまち、釧路</div><div>WHY THIS WINS</div></div>
+</section>
+
+<!-- ============================================================= CLOSING -->
+<section class="slide close dark">
+  <svg style="position:absolute;inset:0;opacity:.9" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="1280" height="720" fill="url(#sky)"/>
+    <circle cx="640" cy="330" r="70" fill="url(#sun)"/>
+    <path d="M0,556 C240,538 520,566 760,556 C1000,546 1140,566 1280,558 L1280,720 L0,720 Z" fill="#17130F"/>
+    <rect width="1280" height="720" fill="#0B1524" opacity="0.28"/>
+  </svg>
+  <div class="pad">
+    <div class="catch serif">また、<span class="hl">来</span>たくなる。ずっと、<span class="hl">い</span>たくなる。</div>
+    <div style="margin-top:26px;z-index:3;position:relative">
+      <svg width="250" height="58" viewBox="0 0 300 68" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(6,4)"><path d="M30,60 C40,46 20,40 34,28 C44,20 30,14 40,6" fill="none" stroke="#F4F1EA" stroke-width="6.5" stroke-linecap="round"/><circle cx="37.5" cy="17" r="7.5" fill="#F2A93B"/></g>
+        <text x="78" y="40" font-family="SG,sans-serif" font-weight="700" font-size="34" letter-spacing="6" fill="#F4F1EA">KUSHIRO</text>
+        <text x="80" y="60" font-family="NSerifJP,serif" font-weight="600" font-size="14" letter-spacing="9" fill="rgba(244,241,234,.72)">釧 路 市</text>
+      </svg>
+    </div>
+    <div style="margin-top:14px;font-family:var(--latin);font-size:12px;letter-spacing:.28em;color:rgba(255,255,255,.6);text-transform:uppercase;z-index:3;position:relative">選ばれ続けるまち、釧路 ／ Brand Proposal 2026</div>
+  </div>
+</section>
+
+</body>
+</html>
